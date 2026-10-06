@@ -91,6 +91,9 @@ for name, s in sheets.items():
                     problems.append(f"{where}.{col}: text {v!r} not in HoloCure")
             elif t.startswith("ref "):
                 target = t[4:].split()[0]
+                literals = [x.strip().strip("'") for x in t[4:].split(" or ")[1:]]
+                if v in literals:
+                    continue
                 sh, _, sub = target.partition(".")
                 if sh == "systems":
                     ok = any(r["id"] == v and r["group"] == sub for r in sheets["systems"]["rows"])
@@ -107,6 +110,15 @@ for name, s in sheets.items():
         if name == "systems":
             if not os.path.exists(os.path.normpath(os.path.join(JAVA, row["java"]))):
                 problems.append(f"{where}.java: {row['java']} not written yet (unimplemented)")
+
+# every stage can be played: a fan at minute 0, and bosses to end the night
+for st in sheets["stages"]["rows"]:
+    if not any(f["stage"] in (st["id"], "any") and f["minute_from"] == 0 for f in sheets["fans"]["rows"]):
+        problems.append(f"stages[{st['id']}]: no fan appears at minute 0")
+    if not any(b["stage"] == st["id"] for b in sheets["bosses"]["rows"]):
+        problems.append(f"stages[{st['id']}]: no boss, so the night never ends")
+    if not any(pr["stage"] == st["id"] for pr in sheets["props"]["rows"]):
+        problems.append(f"stages[{st['id']}]: no props")
 
 # every hook referenced as a dialog trigger must be a systems hook; every systems row must be used or be a hook
 used = set()

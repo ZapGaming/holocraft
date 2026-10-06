@@ -19,6 +19,11 @@ Minecraft's hotbar/armour/menus; idols are hotbar weapons; HoloCure's level-up r
   looking straight down, chunk cave-culling drops everything past one chunk border, so the flat view turns
   `chunkCullingEnabled` off. e4mc's mixins target intermediary names by regex, so **co-op cannot be tested in the
   loom dev client** — test it in a production launch (portablemc `fabric:1.21.4:0.19.5` with the release jar).
+- Stages (0.2.0): a stage world plays its own stage every night (`WaveDirector.stage` reads the overworld's
+  `StageChunkGenerator`); an ordinary world walks the stages in order. Fans carry a `stage` column (`any` = all).
+  World presets, biomes and the world_preset tag are generated per stages row by `tools/gen.py`; each stage's
+  music is `holocraft:music.stage_<id>`. Run preflight with `HOLOCURE_DIR` set so names are checked against the
+  real data.win strings (weapon/special/stage/boss names must be HoloCure's own).
 - Co-op: `HOLOCRAFT_HOST=1` opens the world to LAN on load; bundled e4mc relays it and logs
   `Domain assigned: <address>`; joiners use Prism `--launch HoloCraft --server <address>`. Verified 2026-10-06 with
   two production clients over the real e4mc relay (`-Dholocraft.lanOffline=true` only because test accounts are

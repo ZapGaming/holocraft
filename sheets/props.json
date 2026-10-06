@@ -181,6 +181,429 @@
    "solid": false,
    "shape3d": "cross",
    "depth_px": 2
+  },
+  {
+   "id": "office_divider",
+   "stage": "holo_office",
+   "object": "obj_Divider1",
+   "sprite": "spr_officedivider",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_divider2",
+   "stage": "holo_office",
+   "object": "obj_Divider2",
+   "sprite": "spr_officedivider2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_desk",
+   "stage": "holo_office",
+   "object": "obj_Desk",
+   "sprite": "spr_deskempty",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_desk_side",
+   "stage": "holo_office",
+   "object": "obj_DeskSideways2",
+   "sprite": "spr_desk2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_desk_pc",
+   "stage": "holo_office",
+   "object": "obj_DeskPC",
+   "sprite": "spr_pcdesk",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_desk_pc2",
+   "stage": "holo_office",
+   "object": "obj_DeskPC2",
+   "sprite": "spr_pcdesk2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_desk_things",
+   "stage": "holo_office",
+   "object": "obj_DeskTHings",
+   "sprite": "spr_desk",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_chair1",
+   "stage": "holo_office",
+   "object": "obj_OfficeChair1",
+   "sprite": "spr_officechair1",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_chair2",
+   "stage": "holo_office",
+   "object": "obj_OfficeChair2",
+   "sprite": "spr_officechair2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_chair3",
+   "stage": "holo_office",
+   "object": "obj_OfficeChair3",
+   "sprite": "spr_officechair3",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_benches",
+   "stage": "holo_office",
+   "object": "obj_Benches",
+   "sprite": "spr_benches",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_lockers",
+   "stage": "holo_office",
+   "object": "obj_Lockers",
+   "sprite": "spr_locker",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_couch1",
+   "stage": "holo_office",
+   "object": "obj_Couch1",
+   "sprite": "spr_couch1",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_couch2",
+   "stage": "holo_office",
+   "object": "obj_Couch2",
+   "sprite": "spr_couch2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_dining_table",
+   "stage": "holo_office",
+   "object": "obj_DiningTable1",
+   "sprite": "spr_diningtable",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_dining_chair",
+   "stage": "holo_office",
+   "object": "obj_DIningChair3",
+   "sprite": "spr_diningchair3",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_bookshelf1",
+   "stage": "holo_office",
+   "object": "obj_Bookshelf1",
+   "sprite": "spr_bookshelf1",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_bookshelf2",
+   "stage": "holo_office",
+   "object": "obj_Bookshelf2",
+   "sprite": "spr_bookshelf2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_cabinet",
+   "stage": "holo_office",
+   "object": "obj_Cabinet1",
+   "sprite": "spr_cabinet1",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_trash",
+   "stage": "holo_office",
+   "object": "obj_TrashBin",
+   "sprite": "spr_trash",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_water_cooler",
+   "stage": "holo_office",
+   "object": "obj_WaterCooler",
+   "sprite": "spr_watercooler",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_counter",
+   "stage": "holo_office",
+   "object": "obj_KitchenCounterA",
+   "sprite": "spr_kitchencounter",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_vending",
+   "stage": "holo_office",
+   "object": "obj_VendingMachine",
+   "sprite": "spr_vendingmachine",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_coffee_table",
+   "stage": "holo_office",
+   "object": "obj_CoffeeTable1",
+   "sprite": "spr_officetable1",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_yagoo",
+   "stage": "holo_office",
+   "object": "obj_YagooPillar",
+   "sprite": "BG_yagoohead",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "office_plant_a",
+   "stage": "holo_office",
+   "object": "obj_OfficePlant_A",
+   "sprite": "spr_plant1",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 3
+  },
+  {
+   "id": "office_plant_b",
+   "stage": "holo_office",
+   "object": "obj_OfficePlant_B",
+   "sprite": "spr_plant2",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 3
+  },
+  {
+   "id": "office_plant_c",
+   "stage": "holo_office",
+   "object": "obj_OfficePlant_C",
+   "sprite": "spr_plant3",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 3
+  },
+  {
+   "id": "office_plant_d",
+   "stage": "holo_office",
+   "object": "obj_OfficePlant_D",
+   "sprite": "spr_plant4",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 3
+  },
+  {
+   "id": "castle_barrel",
+   "stage": "halloween_castle",
+   "object": "obj_CastleBarrel",
+   "sprite": "BG_castleBarrel",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_bench",
+   "stage": "halloween_castle",
+   "object": "obj_CastleBench",
+   "sprite": "BG_castlebench",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_chair_a",
+   "stage": "halloween_castle",
+   "object": "obj_CastleChairA",
+   "sprite": "BG_castleChairA",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_chair_b",
+   "stage": "halloween_castle",
+   "object": "obj_CastleChairB",
+   "sprite": "BG_castleChairB",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_chair_c",
+   "stage": "halloween_castle",
+   "object": "obj_CastleChairC",
+   "sprite": "BG_castleChairC",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_wall_a",
+   "stage": "halloween_castle",
+   "object": "obj_CastleStoneWallA",
+   "sprite": "BG_stonewall1",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_wall_b",
+   "stage": "halloween_castle",
+   "object": "obj_CastleStoneWallB",
+   "sprite": "BG_stonewall2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_wall_c",
+   "stage": "halloween_castle",
+   "object": "obj_CastleStoneWallC",
+   "sprite": "BG_stonewall3",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_table",
+   "stage": "halloween_castle",
+   "object": "obj_CastleTable",
+   "sprite": "BG_castleTable",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_bookshelf_a",
+   "stage": "halloween_castle",
+   "object": "obj_CastleBookshelfA",
+   "sprite": "BG_castleBookshelfA",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_bookshelf_b",
+   "stage": "halloween_castle",
+   "object": "obj_CastleBookshelfB",
+   "sprite": "BG_castleBookshelfB",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_bookshelf_c",
+   "stage": "halloween_castle",
+   "object": "obj_CastleBookshelfC",
+   "sprite": "BG_castleBookshelfC",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_bookshelf_d",
+   "stage": "halloween_castle",
+   "object": "obj_CastleBookshelfD",
+   "sprite": "BG_castleBookshelfD",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_desk",
+   "stage": "halloween_castle",
+   "object": "obj_CastleDesk",
+   "sprite": "BG_castleDesk",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_floor_lamp",
+   "stage": "halloween_castle",
+   "object": "obj_floorLamp",
+   "sprite": "BG_floorLamp",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_piano",
+   "stage": "halloween_castle",
+   "object": "obj_CastlePiano",
+   "sprite": "BG_castlePiano",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_yagoo",
+   "stage": "halloween_castle",
+   "object": "obj_YagooPillar",
+   "sprite": "BG_yagoohead",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 6
+  },
+  {
+   "id": "castle_pumpkin",
+   "stage": "halloween_castle",
+   "object": "obj_Pumpkin",
+   "sprite": "BG_Pumpkin",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 4
   }
  ]
 }

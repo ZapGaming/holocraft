@@ -32,8 +32,8 @@ import net.minecraft.world.World;
 import java.util.*;
 
 /**
- * Every overworld night is a HoloCure stage (stages.json): the stage intro at dusk, fans by minute band
- * (fans.json minute_from/weight), bosses at their minute (bosses.json), and the last boss clears the stage and
+ * Every overworld night is a HoloCure stage (stages.json): the stage intro at dusk, that stage's fans by minute band
+ * (fans.json stage/minute_from/weight), bosses at their minute (bosses.json), and the last boss clears the stage and
  * brings the sunrise. Players count: spawns are per player, boss HP scales with how many are playing.
  */
 public final class WaveDirector extends PersistentState {
@@ -77,8 +77,12 @@ public final class WaveDirector extends PersistentState {
         return t >= DUSK && t < DAWN;
     }
 
-    /** Stage for tonight: stages in order, the last one repeating. */
-    static StagesRow stage(int cleared) {
+    /**
+     * Stage for tonight. A HoloCure stage world (Create World > World Type) plays its own stage every night, harder
+     * each time; an ordinary world walks through the stages in order, the last one repeating.
+     */
+    static StagesRow stage(ServerWorld overworld, int cleared) {
+        if (overworld.getChunkManager().getChunkGenerator() instanceof fail.holocraft.world.StageChunkGenerator g) return g.stage();
         List<StagesRow> l = new ArrayList<>(StagesRow.ALL);
         l.sort(Comparator.comparingInt(StagesRow::order));
         return l.get(Math.min(cleared, l.size() - 1));
@@ -97,7 +101,7 @@ public final class WaveDirector extends PersistentState {
 
     void tick(ServerWorld world) {
         boolean night = isNight(world);
-        StagesRow stage = stage(cleared);
+        StagesRow stage = stage(world, cleared);
         if (night && !active) {
             active = true;
             bossesSpawned.clear();
@@ -141,7 +145,8 @@ public final class WaveDirector extends PersistentState {
     }
 
     private void spawnFan(ServerWorld world, StagesRow stage, int minute, ServerPlayerEntity p) {
-        List<FansRow> pool = FansRow.ALL.stream().filter(f -> f.minuteFrom() <= minute).toList();
+        List<FansRow> pool = FansRow.ALL.stream()
+                .filter(f -> f.minuteFrom() <= minute && (f.stage().equals("any") || f.stage().equals(stage.id()))).toList();
         if (pool.isEmpty()) return;
         int total = pool.stream().mapToInt(FansRow::weight).sum(), roll = world.random.nextInt(total);
         FansRow pick = pool.get(0);
@@ -193,7 +198,7 @@ public final class WaveDirector extends PersistentState {
         WaveDirector w = get(world);
         w.bossesDefeated.add(row.id());
         w.markDirty();
-        StagesRow stage = stage(w.cleared);
+        StagesRow stage = stage(world, w.cleared);
         List<BossesRow> list = bosses(stage);
         boolean last = !list.isEmpty() && list.get(list.size() - 1).id().equals(row.id());
         for (ServerPlayerEntity p : players(world)) ServerPlayNetworking.send(p, new Payloads.Dialog(row.defeatDialog()));
@@ -223,6 +228,6 @@ public final class WaveDirector extends PersistentState {
         WaveDirector w = get(ow);
         boolean boss = w.active && w.bossesSpawned.stream().anyMatch(b -> !w.bossesDefeated.contains(b));
         boolean here = p.getWorld().getRegistryKey() == World.OVERWORLD;
-        ServerPlayNetworking.send(p, new Payloads.Stage(stage(w.cleared).id(), w.active && here, w.cleared, boss && here));
+        ServerPlayNetworking.send(p, new Payloads.Stage(stage(ow, w.cleared).id(), w.active && here, w.cleared, boss && here));
     }
 }

@@ -41,7 +41,8 @@ public abstract class MinecraftClientMixin {
         MinecraftClient mc = (MinecraftClient) (Object) this;
         if (mc.player == null || mc.currentScreen != null && mc.currentScreen.getMusic() != null) return;
         if (!ClientStage.active) return;
-        SoundEvent ev = HcSounds.event(ClientStage.boss ? "music.boss" : "music.stage_night");
+        // each stage plays its own night music (stages.music, as sounds.json holocraft:music.stage_<id>)
+        SoundEvent ev = HcSounds.event(ClientStage.boss ? "music.boss" : "music.stage_" + ClientStage.stage);
         if (ev == null) return;
         cir.setReturnValue(new MusicInstance(new MusicSound(Registries.SOUND_EVENT.getEntry(ev), 0, 0, true)));
     }

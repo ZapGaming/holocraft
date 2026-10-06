@@ -43,7 +43,7 @@ public class StageChunkGenerator extends ChunkGenerator {
         this.biome = biome;
     }
 
-    private StagesRow stage() {
+    public StagesRow stage() {
         for (StagesRow s : StagesRow.ALL) if (s.id().equals(stageId)) return s;
         return StagesRow.ALL.get(0);
     }

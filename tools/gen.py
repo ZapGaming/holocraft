@@ -99,6 +99,31 @@ if len(sys.argv) > 2:
         lang[f"block.holocraft.{r['id']}_ground"] = r["display"].split(" (")[0] + " Ground"
         lang[f"generator.holocraft.{r['id']}"] = r["world_type"]
         lang[f"biome.holocraft.{r['id']}"] = r["display"].split(" (")[0]
+    # every stage is a world type: a world preset whose overworld is that stage, and a biome with its sky and fog
+    wg = os.path.join(sys.argv[2], "data", "holocraft", "worldgen")
+    os.makedirs(os.path.join(wg, "world_preset"), exist_ok=True)
+    os.makedirs(os.path.join(wg, "biome"), exist_ok=True)
+    vanilla_dims = {
+        "minecraft:the_end": {"type": "minecraft:the_end", "generator": {"type": "minecraft:noise",
+            "biome_source": {"type": "minecraft:the_end"}, "settings": "minecraft:end"}},
+        "minecraft:the_nether": {"type": "minecraft:the_nether", "generator": {"type": "minecraft:noise",
+            "biome_source": {"type": "minecraft:multi_noise", "preset": "minecraft:nether"}, "settings": "minecraft:nether"}}}
+    for r in sorted(all_sheets["stages"]["rows"], key=lambda r: r["order"]):
+        dims = {"minecraft:overworld": {"type": "holocraft:stage", "generator": {"type": "holocraft:stage",
+                "stage": r["id"], "biome": "holocraft:" + r["id"]}}}
+        dims.update(vanilla_dims)
+        json.dump({"dimensions": dims}, open(os.path.join(wg, "world_preset", r["id"] + ".json"), "w"), indent=1)
+        json.dump({"carvers": [], "downfall": 0.4, "has_precipitation": False, "temperature": 0.8,
+                   "effects": {"fog_color": r["fog_color"], "sky_color": r["sky_color"], "water_color": 4159204,
+                               "water_fog_color": 329011, "music_volume": 1.0},
+                   "features": [[] for _ in range(11)], "spawn_costs": {},
+                   "spawners": {k: [] for k in ["ambient", "axolotls", "creature", "misc", "monster",
+                                               "underground_water_creature", "water_ambient", "water_creature"]}},
+                  open(os.path.join(wg, "biome", r["id"] + ".json"), "w"), indent=1)
+    tag = os.path.join(sys.argv[2], "data", "minecraft", "tags", "worldgen", "world_preset")
+    os.makedirs(tag, exist_ok=True)
+    json.dump({"replace": False, "values": ["holocraft:" + r["id"] for r in sorted(all_sheets["stages"]["rows"], key=lambda r: r["order"])]},
+              open(os.path.join(tag, "normal.json"), "w"))
     for r in all_sheets["props"]["rows"]:
         loot("prop_" + r["id"])
         lang[f"block.holocraft.prop_{r['id']}"] = r["id"].replace("_", " ").title()

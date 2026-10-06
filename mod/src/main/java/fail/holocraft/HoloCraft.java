@@ -14,7 +14,8 @@ import org.slf4j.LoggerFactory;
 
 public class HoloCraft implements ModInitializer {
     public static final String MOD_ID = "holocraft";
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = net.fabricmc.loader.api.FabricLoader.getInstance().getModContainer(MOD_ID)
+            .map(c -> c.getMetadata().getVersion().getFriendlyString()).orElse("dev");
     public static final Logger LOG = LoggerFactory.getLogger("HoloCraft");
 
     public static Identifier id(String path) { return Identifier.of(MOD_ID, path); }

@@ -18,7 +18,9 @@
   "ground_cells": "int; the floor texture is cut into ground_cells x ground_cells blocks (<= 40)",
   "map_px_per_block": "int; HoloCure map pixels per Minecraft block (placements and floor)",
   "surface_y": "int; Minecraft y of the stage floor",
-  "world_type": "string; the name shown in Create World > World Type"
+  "world_type": "string; the name shown in Create World > World Type",
+  "sky_color": "int; 0xRRGGBB sky of the stage's biome",
+  "fog_color": "int; 0xRRGGBB fog of the stage's biome"
  },
  "rows": [
   {
@@ -38,7 +40,51 @@
    "ground_cells": 40,
    "map_px_per_block": 32,
    "surface_y": 64,
-   "world_type": "HoloCure: Grassy Plains"
+   "world_type": "HoloCure: Grassy Plains",
+   "sky_color": 7907327,
+   "fog_color": 12638463
+  },
+  {
+   "id": "holo_office",
+   "display": "Holo Office",
+   "order": 2,
+   "music": "bgm_stardust",
+   "intro_dialog": "office_intro",
+   "spawn_per_second": 0.7,
+   "spawn_growth": 0.4,
+   "max_alive_per_player": 50,
+   "night_scaling": 0.35,
+   "radius_min": 14.0,
+   "radius_max": 26.0,
+   "room": "rm_HoloOffice",
+   "ground_sprite": "bg_holoOfficeFloor",
+   "ground_cells": 16,
+   "map_px_per_block": 32,
+   "surface_y": 64,
+   "world_type": "HoloCure: Holo Office",
+   "sky_color": 15915460,
+   "fog_color": 15721430
+  },
+  {
+   "id": "halloween_castle",
+   "display": "Halloween Castle",
+   "order": 3,
+   "music": "bgm_halloweennight",
+   "intro_dialog": "castle_intro",
+   "spawn_per_second": 0.8,
+   "spawn_growth": 0.45,
+   "max_alive_per_player": 55,
+   "night_scaling": 0.35,
+   "radius_min": 14.0,
+   "radius_max": 26.0,
+   "room": "rm_Castle",
+   "ground_sprite": "BG_castlefloor",
+   "ground_cells": 4,
+   "map_px_per_block": 32,
+   "surface_y": 64,
+   "world_type": "HoloCure: Halloween Castle",
+   "sky_color": 2825023,
+   "fog_color": 3810896
   }
  ]
 }
