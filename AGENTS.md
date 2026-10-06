@@ -33,3 +33,10 @@ Minecraft's hotbar/armour/menus; idols are hotbar weapons; HoloCure's level-up r
   fills `vendor/`). Recipe mirrors Melty's *Mario 64 in Minecraft*.
 - **Melty status:** HoloCure is not in Melty's game catalog (2026-10-06), so the listing can't name it; an
   `external` requirement makes one_click_check say no. Draft only until Melty adds it.
+- **Mythos Launcher** (Zandy's own offline launcher, `%APPDATA%\.mythoslauncher`) runs HoloCraft as an "edition":
+  its ApiUrl points at the Space route `failure.zo.space/api/mythos/manifest` (Zandy's editions proxied + a HoloCraft
+  entry whose overlay only sets Fabric's main class), the base is a local `fabric-loader-0.19.5-1.21.4` version json,
+  and mods go in `instances\1.21.4-holocraft-0.2.0\mods`. That json must be the **pre-merged** one from
+  `tools/mythos_version.py` (`mythos/`): Mythos concatenates inherited libraries without de-duplicating, so the
+  plain Fabric profile puts two ASM versions on the classpath and Fabric refuses to start. Verified by driving
+  Mythos's own `MythosLauncher.Core` install/launch code on Zo to the HoloCraft title screen.
