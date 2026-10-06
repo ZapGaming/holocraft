@@ -25,7 +25,7 @@ import java.util.*;
  */
 public final class HoloCureImport {
     /** Bump when the importer's output changes so existing packs are rebuilt. */
-    public static final int IMPORTER_VERSION = 4;
+    public static final int IMPORTER_VERSION = 5;
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public static Path packDir() { return FabricLoader.getInstance().getGameDir().resolve("holocraft/pack"); }
@@ -187,7 +187,13 @@ public final class HoloCureImport {
         JsonArray props = new JsonArray();
         for (PropsRow p : PropsRow.ALL) {
             if (!p.stage().equals(st.id())) continue;
-            String id = "prop_" + p.id(), tex = "holocraft:hc/" + texPath(p.sprite()) + "/0";
+            String id = "prop_" + p.id(), tex = "holocraft:block/prop/" + p.id();
+            // block and item models can only use textures in the block atlas (textures/block, textures/item),
+            // so the prop's first frame is copied there; the renderer keeps using the hc/ frames
+            Path frame0 = assets.resolve("holocraft/textures/hc/" + texPath(p.sprite()) + "/0.png");
+            Path atlasCopy = assets.resolve("holocraft/textures/block/prop/" + p.id() + ".png");
+            Files.createDirectories(atlasCopy.getParent());
+            if (Files.isRegularFile(frame0)) Files.copy(frame0, atlasCopy, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
             write(assets.resolve("holocraft/blockstates/" + id + ".json"), "{\"variants\":{\"\":{\"model\":\"holocraft:block/" + id + "\"}}}");
             write(assets.resolve("holocraft/models/block/" + id + ".json"), "{\"textures\":{\"particle\":\"" + tex + "\"}}");
             write(assets.resolve("holocraft/models/item/" + id + ".json"), "{\"parent\":\"minecraft:item/generated\",\"textures\":{\"layer0\":\"" + tex + "\"}}");

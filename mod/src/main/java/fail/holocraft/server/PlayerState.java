@@ -131,7 +131,8 @@ public final class PlayerState extends PersistentState {
                 if (e.pending > 0 && !OFFERS.containsKey(p.getUuid()) && p.isAlive()) {
                     List<Payloads.Option> offer = offer(p);
                     OFFERS.put(p.getUuid(), offer);
-                    ServerPlayNetworking.send(p, new Payloads.LevelUp(p.experienceLevel, offer));
+                    // queued level-ups each show the level they reward, not the current one every time
+                    ServerPlayNetworking.send(p, new Payloads.LevelUp(Math.max(1, e.rewardedLevel - e.pending + 1), offer));
                 }
             }
         });
