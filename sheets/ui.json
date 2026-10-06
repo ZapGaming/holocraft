@@ -1,0 +1,136 @@
+{
+ "sheet": "ui",
+ "about": "Each row is one Minecraft GUI texture the generated HoloCraft pack overrides with HoloCure art, built on the player's PC from their own HoloCure. Generates UiOverride (used by the importer).",
+ "columns": {
+  "mc_path": "string; path under assets/minecraft/textures/ (must exist in the 1.21.4 client jar)",
+  "out_w": "int; output width in px",
+  "out_h": "int; output height in px",
+  "source": "holocure sprite",
+  "frame": "int",
+  "mode": "stretch | nine_slice | tile_row | fit | orb_atlas | solid",
+  "border": "int; nine_slice border in source px (0 when unused)",
+  "tint": "hex RRGGBB multiplied in (solid: the fill colour, drawn at 80% opacity), or none"
+ },
+ "rows": [
+  {
+   "mc_path": "gui/sprites/widget/button.png",
+   "out_w": 200,
+   "out_h": 20,
+   "source": "hud_OptionButton",
+   "frame": 0,
+   "mode": "nine_slice",
+   "border": 6,
+   "tint": "none"
+  },
+  {
+   "mc_path": "gui/sprites/widget/button_highlighted.png",
+   "out_w": 200,
+   "out_h": 20,
+   "source": "hud_OptionButton",
+   "frame": 1,
+   "mode": "nine_slice",
+   "border": 6,
+   "tint": "ff9ccf"
+  },
+  {
+   "mc_path": "gui/sprites/widget/button_disabled.png",
+   "out_w": 200,
+   "out_h": 20,
+   "source": "hud_OptionButton",
+   "frame": 0,
+   "mode": "nine_slice",
+   "border": 6,
+   "tint": "7a7a8c"
+  },
+  {
+   "mc_path": "gui/sprites/widget/text_field.png",
+   "out_w": 200,
+   "out_h": 20,
+   "source": "ui_menu_skill_window",
+   "frame": 0,
+   "mode": "nine_slice",
+   "border": 6,
+   "tint": "none"
+  },
+  {
+   "mc_path": "gui/sprites/widget/text_field_highlighted.png",
+   "out_w": 200,
+   "out_h": 20,
+   "source": "ui_menu_upgrade_window_selected",
+   "frame": 0,
+   "mode": "nine_slice",
+   "border": 6,
+   "tint": "none"
+  },
+  {
+   "mc_path": "gui/sprites/hud/hotbar.png",
+   "out_w": 182,
+   "out_h": 22,
+   "source": "ui_skilliconback",
+   "frame": 0,
+   "mode": "tile_row",
+   "border": 0,
+   "tint": "none"
+  },
+  {
+   "mc_path": "gui/sprites/hud/hotbar_selection.png",
+   "out_w": 24,
+   "out_h": 23,
+   "source": "hud_caseSelect",
+   "frame": 0,
+   "mode": "stretch",
+   "border": 0,
+   "tint": "none"
+  },
+  {
+   "mc_path": "gui/sprites/hud/experience_bar_background.png",
+   "out_w": 182,
+   "out_h": 5,
+   "source": "hud_expbar_bg",
+   "frame": 0,
+   "mode": "stretch",
+   "border": 0,
+   "tint": "none"
+  },
+  {
+   "mc_path": "gui/sprites/hud/experience_bar_progress.png",
+   "out_w": 182,
+   "out_h": 5,
+   "source": "hud_expbar_anim",
+   "frame": 0,
+   "mode": "stretch",
+   "border": 0,
+   "tint": "none"
+  },
+  {
+   "mc_path": "gui/menu_background.png",
+   "out_w": 32,
+   "out_h": 32,
+   "source": "menu_charselecBG",
+   "frame": 0,
+   "mode": "solid",
+   "border": 0,
+   "tint": "0f1d3d"
+  },
+  {
+   "mc_path": "gui/menu_list_background.png",
+   "out_w": 32,
+   "out_h": 32,
+   "source": "menu_charselecBG",
+   "frame": 0,
+   "mode": "solid",
+   "border": 0,
+   "tint": "0a1430"
+  },
+  {
+   "mc_path": "entity/experience_orb.png",
+   "out_w": 64,
+   "out_h": 64,
+   "source": "spr_EXP",
+   "frame": 0,
+   "mode": "orb_atlas",
+   "border": 0,
+   "tint": "none"
+  }
+ ]
+}

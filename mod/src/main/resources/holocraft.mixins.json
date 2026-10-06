@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "package": "fail.holocraft.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "StableLifecycleMixin"
+  ],
+  "client": [
+    "CameraMixin",
+    "EntityLookMixin",
+    "GameRendererMixin",
+    "LogoDrawerMixin",
+    "MinecraftClientMixin",
+    "ScreenMixin",
+    "SoundManagerMixin",
+    "TitleScreenMixin",
+    "EntityRendererAccessor",
+    "GameRendererProjectionMixin",
+    "PlayerRenderStateMixin",
+    "PlayerRendererMixin",
+    "PlayerIdolDrawMixin",
+    "FrustumMixin",
+    "HudCrosshairMixin",
+    "NoExperimentalWarningMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "sheet": "sounds",
+  "about": "Each row maps one Minecraft sound event to a HoloCure sound, extracted on the player's PC into the generated pack's sounds.json. Rows with a holocraft: event are new events the mod plays.",
+  "columns": {
+    "event": "string; minecraft:<event> to replace, or holocraft:<event> to add",
+    "source": "holocure sound",
+    "stream": "bool; true for music",
+    "volume": "float"
+  },
+  "rows": [
+    {"event": "minecraft:ui.button.click", "source": "snd_menu_select", "stream": false, "volume": 0.7},
+    {"event": "minecraft:entity.player.levelup", "source": "snd_lvlup", "stream": false, "volume": 0.8},
+    {"event": "minecraft:entity.experience_orb.pickup", "source": "snd_getEXP", "stream": false, "volume": 0.5},
+    {"event": "minecraft:entity.player.hurt", "source": "snd_hurt", "stream": false, "volume": 0.8},
+    {"event": "minecraft:music.menu", "source": "bgm_intro", "stream": true, "volume": 0.6},
+    {"event": "holocraft:music.stage_night", "source": "bgm_suspect", "stream": true, "volume": 0.6},
+    {"event": "holocraft:music.boss", "source": "bgm_SSS", "stream": true, "volume": 0.6},
+    {"event": "holocraft:ui.confirm", "source": "snd_menu_confirm", "stream": false, "volume": 0.7},
+    {"event": "holocraft:ui.back", "source": "snd_menu_back", "stream": false, "volume": 0.7},
+    {"event": "holocraft:ui.text_blip", "source": "snd_textblip", "stream": false, "volume": 0.5},
+    {"event": "holocraft:special.ready", "source": "snd_specialReady", "stream": false, "volume": 0.8},
+    {"event": "holocraft:stage.clear", "source": "bgm_gamewin", "stream": true, "volume": 0.7}
+  ]
+}

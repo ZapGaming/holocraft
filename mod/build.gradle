@@ -1,0 +1,49 @@
+plugins {
+    id 'fabric-loom' version '1.10.5'
+}
+
+version = project.mod_version
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+repositories {}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation include("org.apache.commons:commons-compress:1.27.1")
+    implementation include("commons-io:commons-io:2.16.1")
+    implementation include("org.apache.commons:commons-lang3:3.17.0")
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") { expand "version": project.version }
+}
+
+def generatedSheets = layout.buildDirectory.dir("generated/sheets")
+def generatedRes = layout.buildDirectory.dir("generated/sheet-resources")
+tasks.register('genSheets', Exec) {
+    inputs.dir '../sheets'
+    inputs.file '../tools/gen.py'
+    outputs.dir generatedSheets
+    outputs.dir generatedRes
+    commandLine 'python3', '../tools/gen.py', generatedSheets.get().asFile.path, generatedRes.get().asFile.path
+}
+sourceSets.main.java.srcDir(files(generatedSheets).builtBy('genSheets'))
+sourceSets.main.resources.srcDir(files(generatedRes).builtBy('genSheets'))
+
+tasks.withType(JavaCompile).configureEach { it.options.release = 21 }
+java { withSourcesJar() }
+
+jar { from("../LICENSE") { rename { "${it}_${project.archives_base_name}" } } }
+
+loom {
+    runs {
+        client {
+            vmArg "-Dholocraft.debugFx=false"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "sheet": "dialog",
+  "about": "Each row is one story beat, shown in HoloCure's dialogue box (hud_dialogueBox) with a portrait. Text is HoloCraft's own writing. Generates DialogLine.",
+  "columns": {
+    "id": "string",
+    "speaker": "string; name on the box",
+    "portrait": "holocure sprite",
+    "text": "string",
+    "trigger": "ref systems.hooks (the hook that shows it)"
+  },
+  "rows": [
+    {"id": "welcome", "speaker": "A-chan", "portrait": "spr_AchanBoss",
+     "text": "Welcome to HoloCraft! The fans have gone feral. Pick an idol, survive the night, and keep your world safe until sunrise.",
+     "trigger": "first_join"},
+    {"id": "night_one", "speaker": "A-chan", "portrait": "spr_AchanBoss",
+     "text": "Here they come! Your idol fights on her own. Scroll the hotbar to swap idols, right-click for her special.",
+     "trigger": "night_start"},
+    {"id": "smol_ame_arrives", "speaker": "Smol Ame", "portrait": "spr_Ame_portrait",
+     "text": "Hic! A smol detective has arrived to stomp on you!",
+     "trigger": "boss_spawn"},
+    {"id": "smol_ame_down", "speaker": "A-chan", "portrait": "spr_AchanBoss",
+     "text": "Smol Ame is down! Something huge is coming before dawn...",
+     "trigger": "boss_defeat"},
+    {"id": "fubuzilla_arrives", "speaker": "Fubuzilla", "portrait": "spr_FubukiPortrait",
+     "text": "KONKONKON! Fubuzilla is here to flatten your builds!",
+     "trigger": "boss_spawn"},
+    {"id": "stage_clear", "speaker": "A-chan", "portrait": "spr_AchanBoss",
+     "text": "Stage clear! The sun is coming up. Rest, build and get ready: tomorrow night they come back stronger.",
+     "trigger": "boss_defeat"}
+  ]
+}

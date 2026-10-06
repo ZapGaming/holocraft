@@ -1,0 +1,63 @@
+{
+ "sheet": "bosses",
+ "about": "Each row is one boss of a stage night. Spawned by the wave director at its minute; has a HoloCure-style boss bar. Generates BossDef + one EntityType.",
+ "columns": {
+  "id": "string",
+  "display": "holocure string",
+  "stage": "ref stages.id",
+  "sprite": "holocure sprite",
+  "scale": "float; multiplier on HoloCure's own pixel size (1.0 = 24 sprite pixels per block)",
+  "hitbox_w": "float",
+  "hitbox_h": "float",
+  "hp": "float; per player in the session",
+  "speed": "float",
+  "damage": "float",
+  "exp": "int",
+  "minute": "int; night minute it arrives",
+  "move": "ref systems.boss_moves",
+  "intro_dialog": "ref dialog.id",
+  "defeat_dialog": "ref dialog.id",
+  "arrive_sound": "holocure sound",
+  "depth_px": "int; thickness of the thick pixel model seen from the Minecraft camera, in HoloCure pixels"
+ },
+ "rows": [
+  {
+   "id": "smol_ame",
+   "display": "Smol Ame",
+   "stage": "grassy_plains",
+   "sprite": "spr_SmollAme_walk",
+   "scale": 1.0,
+   "hitbox_w": 1.8,
+   "hitbox_h": 2.6,
+   "hp": 160.0,
+   "speed": 0.24,
+   "damage": 4.0,
+   "exp": 40,
+   "minute": 3,
+   "move": "jump_slam",
+   "intro_dialog": "smol_ame_arrives",
+   "defeat_dialog": "smol_ame_down",
+   "arrive_sound": "snd_alert",
+   "depth_px": 4
+  },
+  {
+   "id": "fubuzilla",
+   "display": "Fubuzilla",
+   "stage": "grassy_plains",
+   "sprite": "spr_fubuzilla",
+   "scale": 2.0,
+   "hitbox_w": 2.6,
+   "hitbox_h": 3.0,
+   "hp": 400.0,
+   "speed": 0.2,
+   "damage": 6.0,
+   "exp": 120,
+   "minute": 6,
+   "move": "charge",
+   "intro_dialog": "fubuzilla_arrives",
+   "defeat_dialog": "stage_clear",
+   "arrive_sound": "snd_bossenrage",
+   "depth_px": 4
+  }
+ ]
+}

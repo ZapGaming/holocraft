@@ -1,0 +1,438 @@
+{
+ "sheet": "systems",
+ "about": "Every game system and hook HoloCraft touches. Each row is implemented by exactly one Java class (java column, relative to mod/src/main/java/fail/holocraft/); preflight fails while that file is missing. Other sheets reference rows here by id.",
+ "columns": {
+  "id": "string",
+  "group": "attack_patterns | special_patterns | boss_moves | item_effects | hooks",
+  "java": "string; source file implementing it",
+  "attaches_to": "string; the Minecraft/Fabric point it hooks (class#method or event), or 'sheet' for pure behaviour",
+  "side": "client | server | both",
+  "does": "string"
+ },
+ "rows": [
+  {
+   "id": "projectile_burst",
+   "group": "attack_patterns",
+   "java": "combat/Attacks.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Fires 1+extra_hits projectiles at the nearest fans in range; each pierces N targets."
+  },
+  {
+   "id": "arc_front",
+   "group": "attack_patterns",
+   "java": "combat/Attacks.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Half-circle sweep in front of the player; hits every fan inside the arc."
+  },
+  {
+   "id": "thrust_line",
+   "group": "attack_patterns",
+   "java": "combat/Attacks.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Straight stab toward the nearest fan; extra hits fan out in a V/fork."
+  },
+  {
+   "id": "slow_all",
+   "group": "special_patterns",
+   "java": "combat/Specials.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Slows every fan within 32 blocks by power (0-1) and halves your cooldown for the duration."
+  },
+  {
+   "id": "self_damage_buff",
+   "group": "special_patterns",
+   "java": "combat/Specials.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Multiplies your idol damage by power for the duration."
+  },
+  {
+   "id": "nova_and_buff",
+   "group": "special_patterns",
+   "java": "combat/Specials.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Deals power x base damage to every fan within 8 blocks, then +50% damage and speed for the duration."
+  },
+  {
+   "id": "spin_ring",
+   "group": "special_patterns",
+   "java": "combat/Specials.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Ring of hits around you every 10 ticks for the duration, power x base damage, with knockback."
+  },
+  {
+   "id": "nova_and_revive",
+   "group": "special_patterns",
+   "java": "combat/Specials.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Fire nova of power x base damage; if you would die during the duration you are fully healed instead."
+  },
+  {
+   "id": "jump_slam",
+   "group": "boss_moves",
+   "java": "entity/BossEntity.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Every 6 s leaps at the nearest player and slams, hitting everything within 3 blocks."
+  },
+  {
+   "id": "charge",
+   "group": "boss_moves",
+   "java": "entity/BossEntity.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Every 5 s winds up for 1 s then charges in a straight line at triple speed."
+  },
+  {
+   "id": "exp_gain",
+   "group": "item_effects",
+   "java": "item/ItemEffects.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Multiplies HoloCure EXP picked up by 1+power."
+  },
+  {
+   "id": "refreshing_shield",
+   "group": "item_effects",
+   "java": "item/ItemEffects.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Absorption hearts = power, refreshed every 15 s."
+  },
+  {
+   "id": "haste_speed",
+   "group": "item_effects",
+   "java": "item/ItemEffects.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Idol cooldowns x(1-power), movement speed +power."
+  },
+  {
+   "id": "crit",
+   "group": "item_effects",
+   "java": "item/ItemEffects.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "power chance for idol hits to deal 1.5x damage."
+  },
+  {
+   "id": "heal_pct",
+   "group": "item_effects",
+   "java": "item/ItemEffects.java",
+   "attaches_to": "sheet",
+   "side": "server",
+   "does": "Eating heals power x max health."
+  },
+  {
+   "id": "holocure_import",
+   "group": "hooks",
+   "java": "client/HoloCureImport.java",
+   "attaches_to": "HoloPack#register (first resource pack scan)",
+   "side": "client",
+   "does": "Finds the player's HoloCure, reads data.win + audiogroups, writes the HoloCraft resource pack (textures, font, sounds, lang) to <instance>/holocraft/pack. Skips when the pack matches the HoloCure version."
+  },
+  {
+   "id": "pack_provider",
+   "group": "hooks",
+   "java": "mixin/MinecraftClientMixin.java",
+   "attaches_to": "net.minecraft.client.MinecraftClient#<init> (new ResourcePackManager)",
+   "side": "client",
+   "does": "Appends HoloPack as a resource pack provider; it runs the import on first scan and adds the generated pack as a required, top-priority pack."
+  },
+  {
+   "id": "missing_holocure_screen",
+   "group": "hooks",
+   "java": "client/MissingHoloCureScreen.java",
+   "attaches_to": "TitleScreen#init",
+   "side": "client",
+   "does": "If HoloCure could not be found, explains it once and links to its free Steam page."
+  },
+  {
+   "id": "dialog_screen",
+   "group": "hooks",
+   "java": "client/DialogOverlay.java",
+   "attaches_to": "HudRenderCallback",
+   "side": "client",
+   "does": "HoloCure dialogue box with portrait, typed text and blip sound, for dialog rows."
+  },
+  {
+   "id": "idol_select",
+   "group": "hooks",
+   "java": "client/IdolSelectScreen.java",
+   "attaches_to": "S2C packet holocraft:choose_starter",
+   "side": "client",
+   "does": "HoloCure character-select screen on first join; the pick becomes hotbar slot 1."
+  },
+  {
+   "id": "level_up_screen",
+   "group": "hooks",
+   "java": "client/LevelUpScreen.java",
+   "attaches_to": "S2C packet holocraft:level_up",
+   "side": "client",
+   "does": "Three HoloCure-style upgrade cards (new idol, weapon level, item); the pick is sent back to the server."
+  },
+  {
+   "id": "holo_hud",
+   "group": "hooks",
+   "java": "client/HoloHud.java",
+   "attaches_to": "HudRenderCallback",
+   "side": "client",
+   "does": "HoloCure EXP bar + level, special cooldown icon, night timer and boss bar."
+  },
+  {
+   "id": "sprite_renderer",
+   "group": "hooks",
+   "java": "client/SpriteEntityRenderer.java",
+   "attaches_to": "EntityRendererRegistry",
+   "side": "client",
+   "does": "Draws fans and bosses in the view the camera is in: from the Minecraft camera as animated thick pixel models (pixel_models) turned to their walk direction; from the top-down camera as the original flat HoloCure sprite (flat_view)."
+  },
+  {
+   "id": "fx_renderer",
+   "group": "hooks",
+   "java": "client/FxRenderer.java",
+   "attaches_to": "WorldRenderEvents.AFTER_ENTITIES",
+   "side": "client",
+   "does": "Draws attack and special effects (bullets, slashes, thrusts) from S2C fx packets."
+  },
+  {
+   "id": "music",
+   "group": "hooks",
+   "java": "mixin/MinecraftClientMixin.java",
+   "attaches_to": "net.minecraft.client.MinecraftClient#getMusicType",
+   "side": "client",
+   "does": "Stage music at night, boss music while a boss lives."
+  },
+  {
+   "id": "first_join",
+   "group": "hooks",
+   "java": "server/PlayerState.java",
+   "attaches_to": "ServerPlayConnectionEvents.JOIN",
+   "side": "server",
+   "does": "Shows welcome dialog and the idol select to players with no idol yet."
+  },
+  {
+   "id": "idol_combat",
+   "group": "hooks",
+   "java": "combat/IdolCombat.java",
+   "attaches_to": "ServerTickEvents.END_SERVER_TICK",
+   "side": "server",
+   "does": "Each player holding an idol auto-attacks with it on its cooldown."
+  },
+  {
+   "id": "idol_special",
+   "group": "hooks",
+   "java": "item/IdolItem.java",
+   "attaches_to": "Item#use",
+   "side": "server",
+   "does": "Right-click fires the held idol's special when charged."
+  },
+  {
+   "id": "night_start",
+   "group": "hooks",
+   "java": "server/WaveDirector.java",
+   "attaches_to": "ServerTickEvents.END_WORLD_TICK",
+   "side": "server",
+   "does": "At dusk in the overworld starts the stage night: intro dialog, music, fan spawns that scale with minute and player count."
+  },
+  {
+   "id": "boss_spawn",
+   "group": "hooks",
+   "java": "server/WaveDirector.java",
+   "attaches_to": "ServerTickEvents.END_WORLD_TICK",
+   "side": "server",
+   "does": "Spawns each boss at its night minute near a random player."
+  },
+  {
+   "id": "boss_defeat",
+   "group": "hooks",
+   "java": "entity/BossEntity.java",
+   "attaches_to": "LivingEntity#onDeath",
+   "side": "server",
+   "does": "Shows the boss's defeat dialog; the last boss marks the stage cleared and skips to morning."
+  },
+  {
+   "id": "holo_exp",
+   "group": "hooks",
+   "java": "server/PlayerState.java",
+   "attaches_to": "fan death drop",
+   "side": "server",
+   "does": "Fans drop HoloCure EXP gems; picking them up fills the HoloCure bar and triggers level-up picks."
+  },
+  {
+   "id": "coop_relay",
+   "group": "hooks",
+   "java": "server/CoopInfo.java",
+   "attaches_to": "Open to LAN + bundled e4mc",
+   "side": "both",
+   "does": "HOLOCRAFT_HOST=1 (Melty sets it on every Play) opens the world to friends when it loads; the bundled e4mc relay carries it over the internet and writes 'Domain assigned: <address>' to latest.log, where Melty reads the join address; a friend's Prism joins with --launch HoloCraft --server <address>. Up to 8 players (Minecraft's limit for an opened world)."
+  },
+  {
+   "id": "title_background",
+   "group": "hooks",
+   "java": "mixin/ScreenMixin.java",
+   "attaches_to": "net.minecraft.client.gui.screen.Screen#renderPanoramaBackground",
+   "side": "client",
+   "does": "Every menu with no world open draws HoloCure's title background with idols drifting across it instead of the panorama."
+  },
+  {
+   "id": "logo",
+   "group": "hooks",
+   "java": "mixin/LogoDrawerMixin.java",
+   "attaches_to": "net.minecraft.client.gui.LogoDrawer#draw",
+   "side": "client",
+   "does": "Draws the HoloCraft logo (built from HoloCure's own title font) in place of the Minecraft logo and edition strip."
+  },
+  {
+   "id": "version_label",
+   "group": "hooks",
+   "java": "mixin/TitleScreenMixin.java",
+   "attaches_to": "net.minecraft.client.gui.screen.TitleScreen#render",
+   "side": "client",
+   "does": "Bottom-left label reads 'HoloCraft <version> - Minecraft 1.21.4'."
+  },
+  {
+   "id": "splashes",
+   "group": "hooks",
+   "java": "../../../resources/assets/minecraft/texts/splashes.txt",
+   "attaches_to": "resource",
+   "side": "client",
+   "does": "HoloCraft's own splash lines."
+  },
+  {
+   "id": "window_title",
+   "group": "hooks",
+   "java": "mixin/MinecraftClientMixin.java",
+   "attaches_to": "net.minecraft.client.MinecraftClient#getWindowTitle",
+   "side": "client",
+   "does": "Window title 'HoloCraft'."
+  },
+  {
+   "id": "sfx_player",
+   "group": "hooks",
+   "java": "mixin/SoundManagerMixin.java",
+   "attaches_to": "net.minecraft.client.sound.SoundManager#play",
+   "side": "client",
+   "does": "HoloCure's sound effects are WAV, which Minecraft's sound engine cannot read; sounds mapped to a WAV play through HoloSfx (Java Sound) instead, scaled by Minecraft's volume sliders and distance."
+  },
+  {
+   "id": "stage_worldgen",
+   "group": "hooks",
+   "java": "world/StageChunkGenerator.java",
+   "attaches_to": "Registries.CHUNK_GENERATOR holocraft:stage",
+   "side": "server",
+   "does": "Builds a HoloCure stage as a world: stone under a floor of stage ground blocks whose cells repeat the stage's floor texture, and every prop placement of the stage's room repeated across the map."
+  },
+  {
+   "id": "stage_layout",
+   "group": "hooks",
+   "java": "world/StageLayouts.java",
+   "attaches_to": "HoloCureImport (writes) + world load (reads)",
+   "side": "both",
+   "does": "Reads where each prop stands in the stage room from the player's data.win (via the importer's stages/<id>.json)."
+  },
+  {
+   "id": "world_preset",
+   "group": "hooks",
+   "java": "../../../resources/data/holocraft/worldgen/world_preset/grassy_plains.json",
+   "attaches_to": "data pack world_preset + minecraft:normal tag",
+   "side": "server",
+   "does": "Adds the stage as a World Type in Minecraft's Create World screen. The overworld uses holocraft:stage, Minecraft's overworld dimension with ambient light 0.45, so stage nights stay readable like HoloCure's."
+  },
+  {
+   "id": "stage_biome",
+   "group": "hooks",
+   "java": "../../../resources/data/holocraft/worldgen/biome/grassy_plains.json",
+   "attaches_to": "data pack biome",
+   "side": "server",
+   "does": "HoloCure's stage biome: no vanilla monster spawns (fans come from WaveDirector), plains colours."
+  },
+  {
+   "id": "prop_renderer",
+   "group": "hooks",
+   "java": "client/PropRenderer.java",
+   "attaches_to": "BlockEntityRendererFactories holocraft:prop",
+   "side": "client",
+   "does": "Draws each prop block in the view the camera is in: Minecraft camera = its pixel model built from the sprite by its shape3d/depth_px; top-down = left to flat_view, which draws the original sprite."
+  },
+  {
+   "id": "topdown_camera",
+   "group": "hooks",
+   "java": "client/TopDownCamera.java",
+   "attaches_to": "KeyBinding V + mixin Camera#update",
+   "side": "client",
+   "does": "V switches between Minecraft's camera and HoloCure's top-down view and sets view_mode: camera fixed above the player looking straight down with an orthographic projection at HoloCure's pixel scale, north up, W/A/S/D move up/left/down/right on screen. Positions never change, only how the world is drawn."
+  },
+  {
+   "id": "view_mode",
+   "group": "hooks",
+   "java": "client/ViewMode.java",
+   "attaches_to": "client state read by every renderer",
+   "side": "client",
+   "does": "The one switch both views read: WORLD_3D or ORIGINAL_2D. Flipping it never moves anything."
+  },
+  {
+   "id": "pixel_models",
+   "group": "hooks",
+   "java": "client/PixelModels.java",
+   "attaches_to": "HoloSprites (reads frames) + BakedModel cache",
+   "side": "client",
+   "does": "Turns any HoloCure sprite frame into a thick pixel model (one box per opaque pixel run, Minecraft item-model style), as a single slab or two crossed slabs; built once per frame on the player's PC from their own data.win and cached."
+  },
+  {
+   "id": "flat_view",
+   "group": "hooks",
+   "java": "client/FlatView.java",
+   "attaches_to": "called by prop_renderer, sprite_renderer and player_as_idol while view_mode = ORIGINAL_2D",
+   "side": "client",
+   "does": "Draws a sprite the way HoloCure does from above: flat on the ground plane with the sprite's top to the north, at the stage's map_px_per_block, lifted a hair per block further south so HoloCure's draw order (lower on screen = in front) falls out of the depth test. The ground needs nothing: straight down it is already the stage's floor tiles."
+  },
+  {
+   "id": "player_as_idol",
+   "group": "hooks",
+   "java": "mixin/PlayerRendererMixin.java",
+   "attaches_to": "PlayerEntityRenderer#updateRenderState + LivingEntityRenderer#render",
+   "side": "client",
+   "does": "Every player is drawn as the idol in their hand (idle_sprite standing, run_sprite moving) instead of Steve, in both views; a player holding no idol is drawn as Steve."
+  },
+  {
+   "id": "ortho_projection",
+   "group": "hooks",
+   "java": "mixin/GameRendererProjectionMixin.java",
+   "attaches_to": "GameRenderer#getBasicProjectionMatrix, #bobView, #tiltViewWhenHurt",
+   "side": "client",
+   "does": "While view_mode = ORIGINAL_2D the projection is orthographic and shows 640x360 HoloCure pixels at the stage's map_px_per_block, with no view bobbing or hurt tilt."
+  },
+  {
+   "id": "ortho_frustum",
+   "group": "hooks",
+   "java": "mixin/FrustumMixin.java",
+   "attaches_to": "Frustum#coverBoxAroundSetPosition",
+   "side": "client",
+   "does": "Skips vanilla's frustum back-off in the flat view: it waits for a 16-block box to fit inside a view 11 blocks tall, which an orthographic camera never satisfies, freezing the game."
+  },
+  {
+   "id": "flat_hud",
+   "group": "hooks",
+   "java": "mixin/HudCrosshairMixin.java",
+   "attaches_to": "InGameHud#renderCrosshair",
+   "side": "client",
+   "does": "No crosshair in the HoloCure view, as in HoloCure."
+  },
+  {
+   "id": "stage_world_prompt",
+   "group": "hooks",
+   "java": "mixin/NoExperimentalWarningMixin.java",
+   "attaches_to": "IntegratedServerLoader#tryLoad + LevelProperties#getLifecycle (StableLifecycleMixin)",
+   "side": "both",
+   "does": "Creating or reopening a HoloCure stage world goes straight in, without vanilla's 'experimental settings' warning and backup prompt."
+  }
+ ]
+}

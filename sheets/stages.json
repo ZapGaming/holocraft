@@ -1,0 +1,44 @@
+{
+ "sheet": "stages",
+ "about": "Each row is one HoloCure stage, played as a Minecraft night. Night 1 is Stage 1; clearing a stage's boss marks it cleared for the world and the next night plays the next stage (only Stage 1 in v0.1, replayed harder each night). Generates StageDef.",
+ "columns": {
+  "id": "string",
+  "display": "holocure string",
+  "order": "int",
+  "music": "holocure sound; plays during the night",
+  "intro_dialog": "ref dialog.id",
+  "spawn_per_second": "float; at minute 0, per player",
+  "spawn_growth": "float; added per night minute",
+  "max_alive_per_player": "int",
+  "night_scaling": "float; HP multiplier added per stage already cleared in this world",
+  "radius_min": "float; blocks from a player",
+  "radius_max": "float",
+  "room": "holocure room; the stage map whose ground and placements are copied",
+  "ground_sprite": "holocure sprite; the tiled floor texture",
+  "ground_cells": "int; the floor texture is cut into ground_cells x ground_cells blocks (<= 40)",
+  "map_px_per_block": "int; HoloCure map pixels per Minecraft block (placements and floor)",
+  "surface_y": "int; Minecraft y of the stage floor",
+  "world_type": "string; the name shown in Create World > World Type"
+ },
+ "rows": [
+  {
+   "id": "grassy_plains",
+   "display": "Grassy Plains (NIGHT)",
+   "order": 1,
+   "music": "bgm_suspect",
+   "intro_dialog": "night_one",
+   "spawn_per_second": 0.6,
+   "spawn_growth": 0.35,
+   "max_alive_per_player": 45,
+   "night_scaling": 0.35,
+   "radius_min": 14.0,
+   "radius_max": 26.0,
+   "room": "Room1",
+   "ground_sprite": "BG_newgrass",
+   "ground_cells": 40,
+   "map_px_per_block": 32,
+   "surface_y": 64,
+   "world_type": "HoloCure: Grassy Plains"
+  }
+ ]
+}

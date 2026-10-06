@@ -1,0 +1,186 @@
+{
+ "sheet": "props",
+ "about": "Each row is one kind of object HoloCure places on a stage map (trees, pillars, fences, flowers). The importer reads every placement of the row's object from the stage's room in the player's own data.win; the world generator puts a holocraft:<id> block there, drawn as the HoloCure sprite. Generates PropsRow + one block per row.",
+ "columns": {
+  "id": "string; block id holocraft:prop_<id>",
+  "stage": "ref stages.id",
+  "object": "holocure object; the room instances to copy",
+  "sprite": "holocure sprite",
+  "solid": "bool; the 1x1 block at its base collides (trunks, pillars, fences); false = walk-through (flowers, bushes)",
+  "shape3d": "cross | slab; Minecraft camera: cross = the sprite pressed into a thick pixel model twice at right angles so round things (trees, bushes, flowers) are solid from every side; slab = one thick pixel model along the prop's facing (fences, walls, signs)",
+  "depth_px": "int; thickness of the pixel model in HoloCure pixels"
+ },
+ "rows": [
+  {
+   "id": "dead_tree",
+   "stage": "grassy_plains",
+   "object": "obj_DeadTree",
+   "sprite": "BG_DeadTree",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "live_tree",
+   "stage": "grassy_plains",
+   "object": "obj_LiveTree",
+   "sprite": "BG_fulltree",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "pillar",
+   "stage": "grassy_plains",
+   "object": "obj_Pillar",
+   "sprite": "BG_Pillar",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "pillar_broken",
+   "stage": "grassy_plains",
+   "object": "obj_PillarBroken",
+   "sprite": "BG_PillarBroken",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "yagoo_pillar",
+   "stage": "grassy_plains",
+   "object": "obj_YagooPillar",
+   "sprite": "BG_yagoohead",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "yagoo_head",
+   "stage": "grassy_plains",
+   "object": "obj_Destructable",
+   "sprite": "spr_YagooHeadB",
+   "solid": true,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "fence_a",
+   "stage": "grassy_plains",
+   "object": "obj_Fence1",
+   "sprite": "BG_fence1",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 4
+  },
+  {
+   "id": "fence_b",
+   "stage": "grassy_plains",
+   "object": "obj_Fence2",
+   "sprite": "BG_fence2",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 4
+  },
+  {
+   "id": "fence_c",
+   "stage": "grassy_plains",
+   "object": "obj_Fence3",
+   "sprite": "BG_fence3",
+   "solid": true,
+   "shape3d": "slab",
+   "depth_px": 4
+  },
+  {
+   "id": "bush_a",
+   "stage": "grassy_plains",
+   "object": "obj_Bush1",
+   "sprite": "BG_bush1",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "bush_b",
+   "stage": "grassy_plains",
+   "object": "obj_Bush2",
+   "sprite": "BG_bush2",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "bush_c",
+   "stage": "grassy_plains",
+   "object": "obj_Bush3",
+   "sprite": "BG_bush3",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "bush_d",
+   "stage": "grassy_plains",
+   "object": "obj_Bush4",
+   "sprite": "BG_bush4",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "flower_a",
+   "stage": "grassy_plains",
+   "object": "obj_Flower1",
+   "sprite": "BG_flower3",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "flower_b",
+   "stage": "grassy_plains",
+   "object": "obj_Flower2",
+   "sprite": "BG_flower2",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "flower_c",
+   "stage": "grassy_plains",
+   "object": "obj_Flower3",
+   "sprite": "BG_flower1",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "flower_d",
+   "stage": "grassy_plains",
+   "object": "obj_Flower4",
+   "sprite": "BG_flowerB1",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "flower_e",
+   "stage": "grassy_plains",
+   "object": "obj_Flower5",
+   "sprite": "BG_flowerB2",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  },
+  {
+   "id": "flower_f",
+   "stage": "grassy_plains",
+   "object": "obj_Flower6",
+   "sprite": "BG_flowerC1",
+   "solid": false,
+   "shape3d": "cross",
+   "depth_px": 2
+  }
+ ]
+}

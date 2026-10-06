@@ -1,0 +1,27 @@
+{
+  "sheet": "items",
+  "about": "Each row is one HoloCure item. 'equip' items go in a Minecraft armour slot and apply a passive; 'food' items are eaten. Generates ItemDef + one Item registration.",
+  "columns": {
+    "id": "string",
+    "display": "holocure string",
+    "sprite": "holocure sprite",
+    "kind": "equip | food",
+    "slot": "head | chest | legs | feet | none",
+    "effect": "ref systems.item_effects",
+    "power": "float; meaning per effect",
+    "power_per_level": "float; added per extra level (max 3)",
+    "drop_chance": "float; chance a defeated fan drops it (food) or 0"
+  },
+  "rows": [
+    {"id": "study_glasses", "display": "Study Glasses", "sprite": "spr_StudyGlassesIcon", "kind": "equip", "slot": "head",
+     "effect": "exp_gain", "power": 0.10, "power_per_level": 0.05, "drop_chance": 0.0},
+    {"id": "body_pillow", "display": "Body Pillow", "sprite": "spr_BodyPillowIcon", "kind": "equip", "slot": "chest",
+     "effect": "refreshing_shield", "power": 6.0, "power_per_level": 2.0, "drop_chance": 0.0},
+    {"id": "energy_drink", "display": "Energy Drink", "sprite": "spr_EnergyDrinkIcon", "kind": "equip", "slot": "legs",
+     "effect": "haste_speed", "power": 0.10, "power_per_level": 0.05, "drop_chance": 0.0},
+    {"id": "gorillas_paw", "display": "Gorilla's Paw", "sprite": "spr_GorillasPawIcon", "kind": "equip", "slot": "feet",
+     "effect": "crit", "power": 0.15, "power_per_level": 0.05, "drop_chance": 0.0},
+    {"id": "hamburger", "display": "Hamburger", "sprite": "spr_hamburgerIcon", "kind": "food", "slot": "none",
+     "effect": "heal_pct", "power": 0.20, "power_per_level": 0.0, "drop_chance": 0.03}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "holocraft",
+  "version": "${version}",
+  "name": "HoloCraft",
+  "description": "HoloCure - Save the Fans!, played in Minecraft. Idols in your hotbar, fans at night, HoloCure's menus everywhere. Art, music and fonts are read from your own HoloCure.",
+  "authors": ["Zandy"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/holocraft/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["fail.holocraft.HoloCraft"],
+    "client": ["fail.holocraft.client.HoloCraftClient"]
+  },
+  "mixins": ["holocraft.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

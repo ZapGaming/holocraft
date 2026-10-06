@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "mode": "installed",
+  "games": [
+    {
+      "slug": "minecraft-java",
+      "role": "primary"
+    }
+  ],
+  "notes": {
+    "firstLaunch": "Sign in to Minecraft in the launcher the first time. Then Create New World with World Type \"HoloCure: Grassy Plains\" and pick your idol. V switches between the 3D view and HoloCure's own 2D view."
+  },
+  "setup": {
+    "label": "Minecraft",
+    "launch": {
+      "kind": "exe",
+      "path": "{managed}/Prism/prismlauncher.exe",
+      "args": [
+        "--launch",
+        "HoloCraft"
+      ]
+    },
+    "done": {
+      "file": "{managed}/Prism/instances/HoloCraft/.minecraft/logs/latest.log",
+      "contains": "HoloCraft client: HoloCure pack"
+    }
+  },
+  "launch": {
+    "kind": "exe",
+    "path": "{managed}/Prism/prismlauncher.exe",
+    "args": [
+      "--launch",
+      "HoloCraft"
+    ]
+  },
+  "mappings": [
+    {
+      "component": "minecraft",
+      "from": "",
+      "to": "{managed}"
+    },
+    {
+      "component": "main",
+      "from": "",
+      "to": "{managed}/Prism/instances/HoloCraft/.minecraft/mods"
+    }
+  ],
+  "components": [
+    {
+      "id": "main",
+      "kind": "main",
+      "label": "HoloCraft",
+      "fileName": "holocraft-*.jar",
+      "required": true
+    },
+    {
+      "id": "minecraft",
+      "kind": "extra",
+      "label": "Its Minecraft (Prism Launcher, 1.21.4 with Fabric, Fabric API, e4mc)",
+      "fileName": "HoloCraft-Minecraft-*.zip",
+      "required": true
+    }
+  ],
+  "requirements": [],
+  "runtimeData": [
+    "{managed}/Prism"
+  ],
+  "multiplayer": {
+    "maxPlayers": 8,
+    "connect": {
+      "address": {
+        "log": "{managed}/Prism/instances/HoloCraft/.minecraft/logs/latest.log",
+        "after": "Domain assigned: "
+      },
+      "hostEnv": {
+        "HOLOCRAFT_HOST": "1"
+      },
+      "joinArgs": [
+        "--launch",
+        "HoloCraft",
+        "--server",
+        "{address}"
+      ]
+    }
+  }
+}

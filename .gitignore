@@ -1,0 +1,8 @@
+mod/.gradle/
+mod/build/
+mod/run/
+mod/out/
+*.class
+dist/
+vendor/
+mod/run2/

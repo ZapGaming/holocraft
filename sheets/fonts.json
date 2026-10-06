@@ -1,0 +1,34 @@
+{
+  "sheet": "fonts",
+  "about": "Each row is one Minecraft font the HoloCraft pack builds from a HoloCure font, so every menu and dialog speaks in HoloCure's lettering. Generates FontRow (used by the importer).",
+  "columns": {
+    "mc_font": "string; font id the pack writes (minecraft:default replaces all UI text)",
+    "source": "holocure font",
+    "ascent": "int; px above baseline",
+    "height": "int; px line height in the bitmap provider",
+    "fallback": "bool; keep Minecraft's own glyphs behind it for characters HoloCure's font lacks"
+  },
+  "rows": [
+    {
+      "mc_font": "minecraft:default",
+      "source": "englishPixel",
+      "ascent": 7,
+      "height": 9,
+      "fallback": true
+    },
+    {
+      "mc_font": "holocraft:logo",
+      "source": "excluded_giant",
+      "ascent": 30,
+      "height": 36,
+      "fallback": false
+    },
+    {
+      "mc_font": "holocraft:title",
+      "source": "excluded",
+      "ascent": 12,
+      "height": 14,
+      "fallback": true
+    }
+  ]
+}

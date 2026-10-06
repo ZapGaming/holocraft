@@ -1,0 +1,131 @@
+{
+ "sheet": "screens",
+ "about": "Each row is one HoloCure sprite a HoloCraft screen or HUD draws. Generates ScreensRow; code refers to these constants, never to sprite names.",
+ "columns": {
+  "id": "string",
+  "sprite": "holocure sprite",
+  "used_by": "ref systems.hooks"
+ },
+ "rows": [
+  {
+   "id": "dialog_box",
+   "sprite": "hud_dialogueBox",
+   "used_by": "dialog_screen"
+  },
+  {
+   "id": "dialog_next",
+   "sprite": "hud_dialogueButton",
+   "used_by": "dialog_screen"
+  },
+  {
+   "id": "portrait_frame",
+   "sprite": "ui_portrait_frame",
+   "used_by": "dialog_screen"
+  },
+  {
+   "id": "portrait_bg",
+   "sprite": "ui_portrait_bg",
+   "used_by": "dialog_screen"
+  },
+  {
+   "id": "select_bg",
+   "sprite": "menu_charselecBG",
+   "used_by": "idol_select"
+  },
+  {
+   "id": "select_bar",
+   "sprite": "menu_charselec_bar",
+   "used_by": "idol_select"
+  },
+  {
+   "id": "select_cursor",
+   "sprite": "menu_carselec_cursor",
+   "used_by": "idol_select"
+  },
+  {
+   "id": "upgrade_window",
+   "sprite": "ui_menu_upgrade_window",
+   "used_by": "level_up_screen"
+  },
+  {
+   "id": "upgrade_window_selected",
+   "sprite": "ui_menu_upgrade_window_selected",
+   "used_by": "level_up_screen"
+  },
+  {
+   "id": "upgrade_title",
+   "sprite": "ui_menu_upgrade_title",
+   "used_by": "level_up_screen"
+  },
+  {
+   "id": "skill_icon_back",
+   "sprite": "ui_skilliconback",
+   "used_by": "level_up_screen"
+  },
+  {
+   "id": "weapon_levels",
+   "sprite": "hud_mainweapon_case_levels",
+   "used_by": "holo_hud"
+  },
+  {
+   "id": "level_badge",
+   "sprite": "hud_level",
+   "used_by": "holo_hud"
+  },
+  {
+   "id": "sp_case",
+   "sprite": "ui_sp_case",
+   "used_by": "holo_hud"
+  },
+  {
+   "id": "sp_bar_bg",
+   "sprite": "ui_SP_Bar_bg",
+   "used_by": "holo_hud"
+  },
+  {
+   "id": "sp_bar_fill",
+   "sprite": "ui_SP_Bar_fill",
+   "used_by": "holo_hud"
+  },
+  {
+   "id": "sp_bar_frame",
+   "sprite": "ui_SP_Bar_frame",
+   "used_by": "holo_hud"
+  },
+  {
+   "id": "boss_hp",
+   "sprite": "hud_HUD_HP_purple",
+   "used_by": "holo_hud"
+  },
+  {
+   "id": "title_bg",
+   "sprite": "hud_new_title_BG",
+   "used_by": "title_background"
+  },
+  {
+   "id": "title_ame",
+   "sprite": "spr_Title_Ame",
+   "used_by": "title_background"
+  },
+  {
+   "id": "title_calli",
+   "sprite": "spr_Title_Calli",
+   "used_by": "title_background"
+  },
+  {
+   "id": "title_gura",
+   "sprite": "spr_Title_Gura",
+   "used_by": "title_background"
+  },
+  {
+   "id": "title_ina",
+   "sprite": "spr_Title_Ina",
+   "used_by": "title_background"
+  },
+  {
+   "id": "title_kiara",
+   "sprite": "spr_Title_Kiara",
+   "used_by": "title_background"
+  }
+ ]
+}
